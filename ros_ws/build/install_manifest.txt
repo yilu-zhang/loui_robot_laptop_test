@@ -1,0 +1,9 @@
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/_setup_util.py
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/env.sh
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/setup.bash
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/local_setup.bash
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/setup.sh
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/local_setup.sh
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/setup.zsh
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/local_setup.zsh
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/.rosinstall

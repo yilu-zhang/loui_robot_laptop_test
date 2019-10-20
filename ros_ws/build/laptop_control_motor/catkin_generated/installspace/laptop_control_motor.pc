@@ -1,0 +1,8 @@
+prefix=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install
+
+Name: laptop_control_motor
+Description: Description of laptop_control_motor
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/lib 
+Requires: 

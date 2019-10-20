@@ -1,0 +1,8 @@
+prefix=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install
+
+Name: motor_info_listener
+Description: Description of motor_info_listener
+Version: 0.0.0
+Cflags: -I/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/include
+Libs: -L/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install/lib 
+Requires: 
