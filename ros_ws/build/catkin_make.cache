@@ -1,2 +1,2 @@
-control_can_motor:laptop_control_motor
+control_can_motor:laptop_control_motor:show_image_raw
 -DCATKIN_DEVEL_PREFIX=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install -G Unix Makefiles

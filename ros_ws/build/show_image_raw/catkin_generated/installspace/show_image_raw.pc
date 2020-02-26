@@ -1,0 +1,8 @@
+prefix=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install
+
+Name: show_image_raw
+Description: Description of show_image_raw
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
