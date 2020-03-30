@@ -25,6 +25,8 @@ pcl/io/pcd_io.h
 -
 pcl/visualization/pcl_visualizer.h
 -
+math.h
+-
 
 /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
 opencv2/core/core_c.h
