@@ -49,7 +49,7 @@ int main( int argc, char** argv )
         for ( auto& d:data )
             fin>>d;
         Eigen::Quaterniond q( cos(data[3]/2*PI_PER_D), 0.0, sin(data[3]/2*PI_PER_D), 0.0);
-        //Eigen::Matrix3d R_wbk(q);
+        //Eigen::Matrix3d R_wbk(q*q_bc);
         Eigen::Vector3d t_wc = q*t_bc;
         //Eigen::Vector3d t_wo2 = R_wbk*t_bo;
         Eigen::Isometry3d T(q*q_bc);
@@ -86,11 +86,13 @@ int main( int argc, char** argv )
         cv::Mat depth = depthImgs[i];
         Eigen::Isometry3d T = poses[i];
         int j = 0;
+        //cout << depth.rows << " " << depth.cols << endl;
         for ( int v=0; v<depth.rows; v++ )
             for ( int u=0; u<depth.cols; u++ )
             {
                 unsigned int d = depth.ptr<unsigned short> ( v )[u]; // 深度值
-                if ( d < 40 ) continue; // 为0表示没有测量到
+                if ( (double(d)/depthScale) < 0.6 ) continue; // 为0表示没有测量到
+                if ( (double(d)/depthScale) > 6 ) continue;
                 Eigen::Vector3d point;
                 //if(j<1000 && j%10==0) 
                     //cout<<double(d)/depthScale<<" ";
