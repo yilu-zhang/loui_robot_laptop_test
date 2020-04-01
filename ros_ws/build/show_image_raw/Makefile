@@ -211,6 +211,21 @@ actionlib_msgs_generate_messages_lisp/fast:
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+show_image_raw/CMakeFiles/save_image.dir/rule:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/save_image.dir/rule
+.PHONY : show_image_raw/CMakeFiles/save_image.dir/rule
+
+# Convenience name for target.
+save_image: show_image_raw/CMakeFiles/save_image.dir/rule
+
+.PHONY : save_image
+
+# fast build rule for target.
+save_image/fast:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/build
+.PHONY : save_image/fast
+
+# Convenience name for target.
 show_image_raw/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
 .PHONY : show_image_raw/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
@@ -555,6 +570,33 @@ tf2_msgs_generate_messages_eus/fast:
 	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make show_image_raw/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
 .PHONY : tf2_msgs_generate_messages_eus/fast
 
+src/save_image.o: src/save_image.cpp.o
+
+.PHONY : src/save_image.o
+
+# target to build an object file
+src/save_image.cpp.o:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/src/save_image.cpp.o
+.PHONY : src/save_image.cpp.o
+
+src/save_image.i: src/save_image.cpp.i
+
+.PHONY : src/save_image.i
+
+# target to preprocess a source file
+src/save_image.cpp.i:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/src/save_image.cpp.i
+.PHONY : src/save_image.cpp.i
+
+src/save_image.s: src/save_image.cpp.s
+
+.PHONY : src/save_image.s
+
+# target to generate assembly for a file
+src/save_image.cpp.s:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/src/save_image.cpp.s
+.PHONY : src/save_image.cpp.s
+
 src/show_image_raw.o: src/show_image_raw.cpp.o
 
 .PHONY : src/show_image_raw.o
@@ -596,6 +638,7 @@ help:
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... actionlib_msgs_generate_messages_lisp"
 	@echo "... edit_cache"
+	@echo "... save_image"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf_generate_messages_eus"
@@ -621,6 +664,9 @@ help:
 	@echo "... install"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... tf2_msgs_generate_messages_eus"
+	@echo "... src/save_image.o"
+	@echo "... src/save_image.i"
+	@echo "... src/save_image.s"
 	@echo "... src/show_image_raw.o"
 	@echo "... src/show_image_raw.i"
 	@echo "... src/show_image_raw.s"

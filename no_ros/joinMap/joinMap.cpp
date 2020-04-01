@@ -23,7 +23,7 @@ int main( int argc, char** argv )
         return 1;
     }
 
-    double T_bc_data[12] = {0};
+    double T_bc_data[13] = {0};
         for ( auto& d:T_bc_data )
             T_bc>>d;
 
@@ -91,11 +91,11 @@ int main( int argc, char** argv )
             for ( int u=0; u<depth.cols; u++ )
             {
                 unsigned int d = depth.ptr<unsigned short> ( v )[u]; // 深度值
-                if ( (double(d)/depthScale) < 0.6 ) continue; // 为0表示没有测量到
-                if ( (double(d)/depthScale) > 6 ) continue;
+                if ( double(d) < 10 ) continue; // 为0表示没有测量到
+                if ( double(d) > 60000 ) continue;
                 Eigen::Vector3d point;
-                //if(j<1000 && j%10==0) 
-                    //cout<<double(d)/depthScale<<" ";
+                //if(j<100000000 && j%10==0) 
+                   // cout<<double(d)<<" ";
                 //j++;
                 point[2] = double(d)/depthScale; 
                 point[0] = (u-cx)*point[2]/fx;
@@ -103,6 +103,7 @@ int main( int argc, char** argv )
                 Eigen::Vector3d pointWorld = T*point;
                 //Eigen::Vector3d pointWorld = point;
                 if(pointWorld[1]<T_bc_data[10] || pointWorld[1]>T_bc_data[11])continue;
+                if(T_bc_data[12]==1)pointWorld[1]=0;
                 
                 PointT p ;
                 p.x = pointWorld[0];

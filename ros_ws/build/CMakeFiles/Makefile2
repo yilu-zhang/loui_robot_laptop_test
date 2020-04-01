@@ -1571,6 +1571,7 @@ clean: laptop_control_motor/CMakeFiles/control_motor.dir/clean
 # Directory level rules for directory show_image_raw
 
 # Convenience name for "all" pass in the directory.
+show_image_raw/all: show_image_raw/CMakeFiles/save_image.dir/all
 show_image_raw/all: show_image_raw/CMakeFiles/show_image_raw.dir/all
 
 .PHONY : show_image_raw/all
@@ -1579,6 +1580,7 @@ show_image_raw/all: show_image_raw/CMakeFiles/show_image_raw.dir/all
 show_image_raw/clean: show_image_raw/CMakeFiles/tf_generate_messages_py.dir/clean
 show_image_raw/clean: show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/clean
 show_image_raw/clean: show_image_raw/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
+show_image_raw/clean: show_image_raw/CMakeFiles/save_image.dir/clean
 show_image_raw/clean: show_image_raw/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/clean
 show_image_raw/clean: show_image_raw/CMakeFiles/tf_generate_messages_lisp.dir/clean
 show_image_raw/clean: show_image_raw/CMakeFiles/tf_generate_messages_eus.dir/clean
@@ -1703,6 +1705,43 @@ show_image_raw/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean:
 
 # clean rule for target.
 clean: show_image_raw/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target show_image_raw/CMakeFiles/save_image.dir
+
+# All Build rule for target.
+show_image_raw/CMakeFiles/save_image.dir/all:
+	$(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/depend
+	$(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/CMakeFiles --progress-num=23,24 "Built target save_image"
+.PHONY : show_image_raw/CMakeFiles/save_image.dir/all
+
+# Include target in all.
+all: show_image_raw/CMakeFiles/save_image.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+show_image_raw/CMakeFiles/save_image.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/save_image.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/CMakeFiles 0
+.PHONY : show_image_raw/CMakeFiles/save_image.dir/rule
+
+# Convenience name for target.
+save_image: show_image_raw/CMakeFiles/save_image.dir/rule
+
+.PHONY : save_image
+
+# clean rule for target.
+show_image_raw/CMakeFiles/save_image.dir/clean:
+	$(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/clean
+.PHONY : show_image_raw/CMakeFiles/save_image.dir/clean
+
+# clean rule for target.
+clean: show_image_raw/CMakeFiles/save_image.dir/clean
 
 .PHONY : clean
 
@@ -2001,7 +2040,7 @@ clean: show_image_raw/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 show_image_raw/CMakeFiles/show_image_raw.dir/all:
 	$(MAKE) -f show_image_raw/CMakeFiles/show_image_raw.dir/build.make show_image_raw/CMakeFiles/show_image_raw.dir/depend
 	$(MAKE) -f show_image_raw/CMakeFiles/show_image_raw.dir/build.make show_image_raw/CMakeFiles/show_image_raw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/CMakeFiles --progress-num=23,24 "Built target show_image_raw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/CMakeFiles --progress-num=25,26 "Built target show_image_raw"
 .PHONY : show_image_raw/CMakeFiles/show_image_raw.dir/all
 
 # Include target in all.

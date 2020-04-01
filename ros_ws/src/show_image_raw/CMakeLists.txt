@@ -18,6 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   sensor_msgs
+  cv_bridge
 )
 
 ## System dependencies are found with CMake's conventions
@@ -129,6 +130,9 @@ include_directories(
 
 add_executable(show_image_raw src/show_image_raw.cpp)
 target_link_libraries(show_image_raw ${catkin_LIBRARIES})
+
+add_executable(save_image src/save_image.cpp)
+target_link_libraries(save_image ${catkin_LIBRARIES} ${OpenCV_LIBS})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/show_image_raw.cpp

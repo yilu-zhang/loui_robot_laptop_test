@@ -764,6 +764,19 @@ actionlib_msgs_generate_messages_lisp/fast:
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named save_image
+
+# Build rule for target.
+save_image: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 save_image
+.PHONY : save_image
+
+# fast build rule for target.
+save_image/fast:
+	$(MAKE) -f show_image_raw/CMakeFiles/save_image.dir/build.make show_image_raw/CMakeFiles/save_image.dir/build
+.PHONY : save_image/fast
+
+#=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -1121,6 +1134,7 @@ help:
 	@echo "... tf_generate_messages_py"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... save_image"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf_generate_messages_eus"

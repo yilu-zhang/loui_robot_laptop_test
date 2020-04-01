@@ -109,6 +109,10 @@ show_image_raw_EXTERNAL_OBJECTS =
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /usr/lib/x86_64-linux-gnu/libboost_signals.so
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/libxmlrpcpp.so
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/libtf2.so
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/libcv_bridge.so
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgcodecs3.so.3.3.1
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/librosconsole.so
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/devel/lib/show_image_raw/show_image_raw: /opt/ros/kinetic/lib/librosconsole_backend_interface.so

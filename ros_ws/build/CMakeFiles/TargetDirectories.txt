@@ -84,6 +84,7 @@
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/edit_cache.dir
+/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/save_image.dir
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/tf_generate_messages_lisp.dir
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/CMakeFiles/tf_generate_messages_eus.dir
