@@ -9,6 +9,10 @@ using namespace std;
 #include <pcl/io/pcd_io.h> 
 #include <pcl/visualization/pcl_visualizer.h>
 #include <math.h>
+#include <algorithm>
+
+using namespace std;
+using namespace cv;
 
 #define PI_PER_D 0.017453292
 int main( int argc, char** argv )
@@ -23,13 +27,13 @@ int main( int argc, char** argv )
         return 1;
     }
 
-    double T_bc_data[13] = {0};
+    double T_bc_data[15] = {0};
         for ( auto& d:T_bc_data )
             T_bc>>d;
 
     Eigen::Vector3d t_bc(T_bc_data[0],T_bc_data[1],T_bc_data[2]);
     double theta=T_bc_data[3]*PI_PER_D;
-    cout<<sin(theta)<<endl;
+    //cout<<sin(theta)<<endl;
     Eigen::Quaterniond q_bc(cos(theta/2),sin(theta/2),0,0);
     
     ifstream fin("./pose.txt");
@@ -79,6 +83,11 @@ int main( int argc, char** argv )
     // 新建一个点云
     PointCloud::Ptr pointCloud( new PointCloud ); 
     PointCloud::Ptr pointCloud_i( new PointCloud ); 
+    PointCloud::Ptr pointCloud_layer_1( new PointCloud );
+
+    // cout << T_bc_data[13] <<" " <<T_bc_data[14] << endl;
+
+    double layer1_max_x(-99999),layer1_max_z(-99999),layer1_min_x(99999),layer1_min_z(99999);
     for ( int i=0; i<8; i++ )
     {
         cout<<"转换图像中: "<<i+1<<endl; 
@@ -103,6 +112,29 @@ int main( int argc, char** argv )
                 Eigen::Vector3d pointWorld = T*point;
                 //Eigen::Vector3d pointWorld = point;
                 if(pointWorld[1]<T_bc_data[10] || pointWorld[1]>T_bc_data[11])continue;
+
+               
+                if(pointWorld[1]>T_bc_data[13]&&pointWorld[1]<T_bc_data[14])
+                {
+                    PointT p_layer1 ;
+                    p_layer1.x = pointWorld[0];
+                    p_layer1.y = pointWorld[1];
+                    p_layer1.z = pointWorld[2];
+                    pointCloud_layer_1->points.push_back(p_layer1);
+
+                    if(pointWorld[2] > layer1_max_z)
+                        layer1_max_z = pointWorld[2];
+                    if(pointWorld[2] < layer1_min_z)
+                        layer1_min_z = pointWorld[2];
+                    if(pointWorld[0] > layer1_max_x)
+                        layer1_max_x = pointWorld[0];
+                    if(pointWorld[0] < layer1_min_x)
+                        layer1_min_x = pointWorld[0];                   
+                }
+
+
+
+
                 if(T_bc_data[12]==1)pointWorld[1]=0;
                 
                 PointT p ;
@@ -148,5 +180,49 @@ int main( int argc, char** argv )
     {
         pcl::io::savePCDFileBinary("i_map.pcd", *pointCloud_i );
     }
+
+    cv::Mat layer1_img(480, 640, CV_8UC1, 255);
+    double detal_x,detal_z,scale_factor_x_1,scale_factor_z_1,scale_factor_1;
+    bool ori_flag;
+    detal_x = layer1_max_x - layer1_min_x;
+    detal_z = layer1_max_z - layer1_min_z;
+    if(detal_x > detal_z)
+    {
+        //scale_factor_x_1 = ;
+        //scale_factor_z_1 = (;
+        scale_factor_1=min((layer1_img.cols-100)/detal_x,(layer1_img.rows-100)/detal_z);
+        ori_flag = true;
+
+    }
+    else
+    {
+        scale_factor_1=min((layer1_img.cols-100)/detal_z,(layer1_img.rows-100)/detal_x);
+        ori_flag = false;
+    }
+
+    cout<<"点云共有"<<pointCloud_layer_1->size()<<"个点."<<endl;
+    cout<<"The scale_factor_1 is:" << scale_factor_1 << endl;
+    for(auto& point:pointCloud_layer_1->points)
+    {
+        int x_axis,z_axis;
+        if(ori_flag)
+        {
+            int i,j;
+            for(i=0;i<1;i++)
+                for(j=0;j<1;j++)
+                    layer1_img.at<uchar>(50+(int)(scale_factor_1*(layer1_max_z-point.z))+i,j+50+(int)(scale_factor_1*(point.x-layer1_min_x)))=0;
+        }
+        else
+        {
+            int i,j;
+            for(i=0;i<1;i++)
+                for(j=0;j<1;j++)
+                    layer1_img.at<uchar>(i+50+(int)(scale_factor_1*(layer1_max_x-point.x)),j+50+(int)(scale_factor_1*(layer1_max_z-point.z)))=0;
+        }
+    }
+
+    imwrite("layer1_1.jpg",layer1_img);
+
+
     return 0;
 }
