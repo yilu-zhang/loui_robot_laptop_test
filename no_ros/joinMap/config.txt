@@ -3,3 +3,11 @@
 -0.090 -0.375 0.012 -7.18 4 417.0 312.5 722.27 723.88 6000.0 -5 5
 -0.090 -0.375 0.012 -7.18 8 321.415982 245.98941 582.795354 584.395006 6000.0
 Tbc:x y z pitch i cx cy fx fy scale top down 2D_flag layer1_top layer1_down
+//"0.785398": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/2.png",
+        //"1.570796": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/3.png",
+        //"2.356194": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/4.png",
+        //"3.141593": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/5.png",
+        //"3.926991": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/6.png",
+        //"4.712389": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/7.png",
+        //"5.497787": "/home/yiluzhang/code/loui_robot_laptop_test/no_ros/3Dto2D/depth/8.png"
+

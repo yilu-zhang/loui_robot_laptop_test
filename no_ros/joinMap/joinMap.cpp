@@ -86,7 +86,6 @@ int main( int argc, char** argv )
     PointCloud::Ptr pointCloud_layer_1( new PointCloud );
 
     // cout << T_bc_data[13] <<" " <<T_bc_data[14] << endl;
-
     double layer1_max_x(-99999),layer1_max_z(-99999),layer1_min_x(99999),layer1_min_z(99999);
     for ( int i=0; i<8; i++ )
     {
