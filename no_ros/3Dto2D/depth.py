@@ -4,17 +4,24 @@ import numpy as np
 import cv2
 import json
 
-#high_list=[1.5,2,2.5] #输出几个高度的平面图 单位米
+# 提取房间高度参数，只能提取1-3层
+high_list=[1.8,2.0,2.1] #输出几个高度的平面图 单位米
 #每个高度取的阈值 如高度为1.5,阈值0.25时取得1.5-0.25到1.5+0.25米点云做输出
-#high_thre=0.25
-high_list=[1.6,1.7,1.8] #输出几个高度的平面图 单位米
-#每个高度取的阈值 如高度为1.5,阈值0.25时取得1.5-0.25到1.5+0.25米点云做输出
-high_thre=0.2
+high_thre = 0.2
+
+# 深度相机参数
 cx = 314.5
 cy = 235.5
 fx = 570.3422241210938
 fy = 570.3422241210938
 depth_scale = 1000.0
+
+camera_pitch = -7.18*np.pi/180.0 # 仰视为正
+camera_height = 1.48 # 相机高度
+
+# 输出2D图分辨率
+image_width = 640
+image_height = 480
 
 def getdict(filename=None):
     '''
@@ -32,33 +39,90 @@ def getdict(filename=None):
         print('getdict error',e)
         return {}
 
+# 通过相机的camera_pitch得到从相机坐标系到xy平面与地面平行坐标系的旋转矩阵
+def pitch_to_Rpc(pitch):
+    R_pc = np.zeros((3,3))
+    R_pc[0][0] = 1.0
+    R_pc[1][1] = np.cos(pitch)
+    R_pc[1][2] = -np.sin(pitch)
+    R_pc[2][1] = np.sin(pitch)
+    R_pc[2][2] = np.cos(pitch)
+    return R_pc
+
+
+# 通过航向角theta得到从xy平面与地面平行坐标系到世界坐标系的旋转矩阵R_wp
+def raw_to_Rwp(theta):
+    R_wp = np.zeros((3,3))
+    R_wp[0][0] = np.cos(theta)
+    R_wp[0][1] = -np.sin(theta)
+    R_wp[1][0] = np.sin(theta)
+    R_wp[1][1] = np.cos(theta)
+    R_wp[2][2] = 1
+    return R_wp
+
+# 将xy平面与地面平行坐标系的点p_p转换成世界坐标系的点p_w
+def tf(R_wp,x,y,p_p):
+    #print('坐标转换')  
+    t_wp = np.array([x,y,camera_height])
+    p_w = np.add(np.dot(R_wp,p_p),t_wp)
+    return list(p_w)
+
+
+def get_depth_file_and_process(filename,R_pc,theta,x,y):
+    #读入cv或numpy
+    img=cv2.imread(filename,cv2.IMREAD_ANYDEPTH)
+    pointdata_k = []
+    R_wp = raw_to_Rwp(theta)
+    for row in range(img.shape[0]):
+        for col in range(img.shape[1]):
+            depth = img[row,col]
+            
+            if depth >= 10 and depth <= 60000:
+                p_c = []
+                depth = depth/depth_scale
+                # 相机坐标系：y轴对应深度方向，x轴与地面平行
+                # p_c为相机坐标系点云               
+                p_c.append((col-cx)*depth/fx)   # x            
+                p_c.append(depth)              # z
+                p_c.append((cy-row)*depth/fy)   # -y
+
+                # 将相机坐标系点云转换到xy平面与地面平行的坐标系点云p_p
+                p_p = np.dot(R_pc,np.array(p_c)) 
+
+                p_w = tf(R_wp,x,y,p_p)
+                pointdata_k.append(p_w)
+    return pointdata_k
+
 
 def createdepthfile(inputfile,outputpath=None):
     _dic=getdict(inputfile)
+    _R_pc = pitch_to_Rpc(camera_pitch)
     if len(_dic)>0:
+        pointdata=[]#伪代码
+        img_cnt = 0
         for k,v in _dic.items():
             #print('k:%s,v: %s'%(k,v))
             _x,_y=k.split('_')
             _x = float(_x)
             _y = float(_y)
-            pointdata=[]#伪代码
+            
             for _k,_v in v.items():
-                print("process image")
+                img_cnt = img_cnt + 1
+                print("process image %d"%(img_cnt))
                 _theta=float(_k)
                 #_x _y _theta 就是当前点云数据的坐标和航向
                 #print('depthfile=',_v)
                 #print('x=%s,y=%s,theta=%s'%(_x,_y,_theta))
-                _data=getdepthfile(_v,_theta)
-                pointdata.append(_data)
-                #_data就是对应的位姿观察的点云
-                #pointdata.append(tf(None,None))
+                #_data就是对应的位姿观察的世界坐标系的点云
                 #点云转换到世界坐标系，增加到文件（列表）中
-                pass
-            print(len(pointdata))
-            points_num = 0
-            for img_points in pointdata:
-                points_num = points_num + len(img_points)
-            print(points_num)
+                _data = get_depth_file_and_process(_v,_R_pc,_theta,_x,_y)
+                pointdata.append(_data)               
+                
+            #print(len(pointdata))
+            #points_num = 0
+            #for img_points in pointdata:
+                #points_num = points_num + len(img_points)
+            #print(points_num)
 
             num_2D_img = len(high_list)
             layer_max_x=[float("-inf")]*num_2D_img
@@ -68,16 +132,12 @@ def createdepthfile(inputfile,outputpath=None):
             point_2D = {}
             for i in range(num_2D_img):
                 point_2D[i]=[]
-            print(len(layer_max_x))
+            #print(len(layer_max_x))
 
-            test_i =0
             for img_points in pointdata:
                 for point_w in img_points:
-                    #test_i=test_i+1
-                    #if test_i<500000 and test_i%50000==0:
-                        #print(point_w)
                     for i in range(num_2D_img):                       
-                        if (point_w[2]+1.48)>=high_list[i] and (point_w[2]+1.48)<=(high_list[i]+high_thre):
+                        if point_w[2]>=high_list[i] and point_w[2]<=(high_list[i]+high_thre):
                             if(point_w[0]>layer_max_x[i]):
                                 layer_max_x[i]=point_w[0]
                             if(point_w[0]<layer_min_x[i]):
@@ -87,103 +147,37 @@ def createdepthfile(inputfile,outputpath=None):
                             if(point_w[1]<layer_min_y[i]):
                                 layer_min_y[i]=point_w[1]
                             point_2D[i].append([point_w[0],point_w[1]])
-                            if point_w[0]!=point_2D[i][-1][0] or point_w[1]!=point_2D[i][-1][1]:
-                                print("error")
-            
-            
-            path = outputpath + k + "_"
-            #for i in range(num_2D_img):
-                #print(layer_max_x[i])
-                #print(layer_min_x[i])
-                #print(layer_max_y[i])
-                #print(layer_min_y[i])
-                #print(len(point_2D[i]))
-                #print(point_2D[i][1:20])
 
-            for i in range(num_2D_img):
-                img_out=np.zeros((480,640),dtype=np.uint8)
-                for row in range(img_out.shape[0]):
-                    for col in range(img_out.shape[1]):
-                        img_out[row,col] = 255
-                detal_x = layer_max_x[i] - layer_min_x[i]
-                detal_y = layer_max_y[i] - layer_min_y[i]
-                if detal_x > detal_y:       
-                    scale_factor=min((img_out.shape[1]-100)/detal_x,(img_out.shape[0]-100)/detal_y)
-                    ori_flag = 1
-                else:
-                    scale_factor=min((img_out.shape[1]-100)/detal_y,(img_out.shape[0]-100)/detal_x)
-                    ori_flag = 0
+        #如果outputpath is None 则输出到当前目录，否则输出到制定目录路
+        if(outputpath==None):    
+            path = ""   
+        else:
+            path = outputpath       
+        img_out=np.zeros((image_height,image_width,3),dtype=np.uint8) # BGR
+        img_out[:,:,:]=255
+        min_scale_factor = []
+        for i in range(num_2D_img):
+            detal_x = layer_max_x[i] - layer_min_x[i]
+            detal_y = layer_max_y[i] - layer_min_y[i]
+            min_scale_factor.append(min((img_out.shape[1]-100)/detal_x,(img_out.shape[0]-100)/detal_y))
+        scale_factor = min(min_scale_factor)
+        max_y = max(layer_max_y)
+        min_x = min(layer_min_x)
+                            
+        # print(scale_factor)
+        for i in range(num_2D_img):
+            for point in point_2D[i]:
+                img_out[int(scale_factor*(max_y-point[1]))+50,int(scale_factor*(point[0]-min_x))+50,i] = 0
                 
-                print(scale_factor)
-                for point in point_2D[i]:
-                    if ori_flag==1:
-                        #if int(scale_factor*(point[0]-layer_min_x[i]))+40>=640:
-                            #print(point[0])
-                            #print(layer_min_x[i])
-                        img_out[int(scale_factor*(layer_max_y[i]-point[1]))+50,int(scale_factor*(point[0]-layer_min_x[i]))+50] = 0
-                    else:
-                        img_out[int(scale_factor*(layer_max_x[i]-point[0]))+50,int(scale_factor*(layer_max_y[i]-point[1]))+50] = 0
-                path1 = path + str(high_list[i]) + "_" + str(high_list[i]+high_thre) + "_" + str(scale_factor) +".jpg"
-                print(path1)
-                cv2.imwrite(path1,img_out)
-
-
-            
-
-
-            #for i in range(len(high_list)):
-                #根据上下阈值截取点云 输出到文件
-                #pointdata 每一个位置的全部数据在这里 
-                #pass
-                #如果outputpath is None 则输出到当前目录，否则输出到制定目录路
+        path1 = path + str(scale_factor) + "_" + str(min_x) + "_" + str(max_y) +"_"+str(num_2D_img)+"_"+str(high_thre)
+        for i in range(num_2D_img):
+            path1 = path1 + "_" + str(high_list[i])
+        path1 = path1 + ".jpg"
+        print('The path of output image is:%s'%(path1))
+        cv2.imwrite(path1,img_out)
+                
     else:
         print('len of dic is 0')
-
-
-# theta:camera to world
-def raw_to_Rwc(theta):
-    R_wc = np.zeros((3,3))
-    R_wc[0][0] = np.cos(theta)
-    R_wc[0][1] = np.sin(theta)
-    R_wc[1][0] = -np.sin(theta)
-    R_wc[1][1] = np.cos(theta)
-    R_wc[2][2] = 1
-    return R_wc
-
-    
-
-def getdepthfile(filename,theta):
-    #读入cv或numpy
-    img=cv2.imread(filename,cv2.IMREAD_ANYDEPTH)
-    R_wc = raw_to_Rwc(theta)
-    pointdata_k = []
-    #print(img.shape[0])
-    #print(img.shape[1])
-    for row in range(img.shape[0]):
-        for col in range(img.shape[1]):
-            depth = img[row,col]
-            
-            if depth >= 10 and depth <= 60000:
-                p_c = []
-                depth = depth/depth_scale               
-                p_c.append((col-cx)*depth/fx)   # x            
-                p_c.append(depth)              # z
-                p_c.append((cy-row)*depth/fy)   # -y
-                p_w = list(np.dot(R_wc,np.array(p_c)))
-                pointdata_k.append(p_w)
-    return pointdata_k
-
-
-def tf(m1,m2):
-    '''
-    #m1 转换矩阵
-    #m2 机器坐标系点云
-    return 世界坐标系 点云
-    '''
-    print('坐标转换')
-
-def add2img(point):
-    pass
 
 
 def test(args):
@@ -202,3 +196,4 @@ if __name__=='__main__':
             ''')
     test(sys.argv)
     pass
+
