@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 {
         ros::init(argc,argv,"show_image_raw");
         ros::NodeHandle n;
-        ros::Subscriber sub0=n.subscribe("/image_raw",10,info0_show);
+        ros::Subscriber sub0=n.subscribe("/cam0/image_raw",10,info0_show);
 	ros::Subscriber sub1=n.subscribe("/cam1/image_raw",10,info1_show);
         ros::spin();
         return 0;
