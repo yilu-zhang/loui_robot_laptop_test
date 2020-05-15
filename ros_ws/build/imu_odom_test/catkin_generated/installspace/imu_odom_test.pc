@@ -1,0 +1,8 @@
+prefix=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/install
+
+Name: imu_odom_test
+Description: Description of imu_odom_test
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

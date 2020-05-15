@@ -128,6 +128,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/gtest/cmake_install.cmake")
   include("/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/control_can_motor/cmake_install.cmake")
   include("/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/laptop_control_motor/cmake_install.cmake")
+  include("/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/imu_odom_test/cmake_install.cmake")
   include("/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/show_image_raw/cmake_install.cmake")
 
 endif()

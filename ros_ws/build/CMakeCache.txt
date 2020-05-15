@@ -354,6 +354,12 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 image_transport_DIR:PATH=/opt/ros/kinetic/share/image_transport/cmake
 
 //Value Computed by CMake
+imu_odom_test_BINARY_DIR:STATIC=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/imu_odom_test
+
+//Value Computed by CMake
+imu_odom_test_SOURCE_DIR:STATIC=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/src/imu_odom_test
+
+//Value Computed by CMake
 laptop_control_motor_BINARY_DIR:STATIC=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build/laptop_control_motor
 
 //Value Computed by CMake
@@ -376,6 +382,9 @@ motor_info_listener_BINARY_DIR:STATIC=/home/yiluzhang/code/loui_robot_laptop_tes
 
 //Value Computed by CMake
 motor_info_listener_SOURCE_DIR:STATIC=/home/yiluzhang/code/loui_robot_laptop_test/ros_ws/src/motor_info_listener
+
+//The directory containing a CMake configuration file for nav_msgs.
+nav_msgs_DIR:PATH=/opt/ros/kinetic/share/nav_msgs/cmake
 
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/kinetic/share/pluginlib/cmake
@@ -542,7 +551,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

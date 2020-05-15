@@ -7,4 +7,5 @@
 subdirs(gtest)
 subdirs(control_can_motor)
 subdirs(laptop_control_motor)
+subdirs(imu_odom_test)
 subdirs(show_image_raw)
