@@ -1,4 +1,6 @@
-/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/edit_cache.dir
 /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/rebuild_cache.dir
-/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/openni_cv_test.dir
+/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/simple_demo.dir
+/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/open_depth.dir
+/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/edit_cache.dir
 /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/open_color.dir
+/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles/open_depth_color.dir

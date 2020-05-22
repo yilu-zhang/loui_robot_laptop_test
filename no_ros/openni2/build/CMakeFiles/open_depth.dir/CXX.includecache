@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/open_color.cpp
+/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/open_depth.cpp
 iostream
 -
 OpenNI.h

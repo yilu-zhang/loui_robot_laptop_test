@@ -60,39 +60,76 @@ CMAKE_SOURCE_DIR = /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2
 CMAKE_BINARY_DIR = /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/openni_cv_test.dir
+# Target rules for target CMakeFiles/simple_demo.dir
 
 # All Build rule for target.
-CMakeFiles/openni_cv_test.dir/all:
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/depend
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles --progress-num=3,4 "Built target openni_cv_test"
-.PHONY : CMakeFiles/openni_cv_test.dir/all
+CMakeFiles/simple_demo.dir/all:
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/depend
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles --progress-num=7,8 "Built target simple_demo"
+.PHONY : CMakeFiles/simple_demo.dir/all
 
 # Include target in all.
-all: CMakeFiles/openni_cv_test.dir/all
+all: CMakeFiles/simple_demo.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/openni_cv_test.dir/rule: cmake_check_build_system
+CMakeFiles/simple_demo.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/openni_cv_test.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/simple_demo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles 0
-.PHONY : CMakeFiles/openni_cv_test.dir/rule
+.PHONY : CMakeFiles/simple_demo.dir/rule
 
 # Convenience name for target.
-openni_cv_test: CMakeFiles/openni_cv_test.dir/rule
+simple_demo: CMakeFiles/simple_demo.dir/rule
 
-.PHONY : openni_cv_test
-
-# clean rule for target.
-CMakeFiles/openni_cv_test.dir/clean:
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/clean
-.PHONY : CMakeFiles/openni_cv_test.dir/clean
+.PHONY : simple_demo
 
 # clean rule for target.
-clean: CMakeFiles/openni_cv_test.dir/clean
+CMakeFiles/simple_demo.dir/clean:
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/clean
+.PHONY : CMakeFiles/simple_demo.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/simple_demo.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/open_depth.dir
+
+# All Build rule for target.
+CMakeFiles/open_depth.dir/all:
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/depend
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles --progress-num=3,4 "Built target open_depth"
+.PHONY : CMakeFiles/open_depth.dir/all
+
+# Include target in all.
+all: CMakeFiles/open_depth.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/open_depth.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/open_depth.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles 0
+.PHONY : CMakeFiles/open_depth.dir/rule
+
+# Convenience name for target.
+open_depth: CMakeFiles/open_depth.dir/rule
+
+.PHONY : open_depth
+
+# clean rule for target.
+CMakeFiles/open_depth.dir/clean:
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/clean
+.PHONY : CMakeFiles/open_depth.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/open_depth.dir/clean
 
 .PHONY : clean
 
@@ -130,6 +167,43 @@ CMakeFiles/open_color.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/open_color.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/open_depth_color.dir
+
+# All Build rule for target.
+CMakeFiles/open_depth_color.dir/all:
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/depend
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles --progress-num=5,6 "Built target open_depth_color"
+.PHONY : CMakeFiles/open_depth_color.dir/all
+
+# Include target in all.
+all: CMakeFiles/open_depth_color.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/open_depth_color.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/open_depth_color.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/build/CMakeFiles 0
+.PHONY : CMakeFiles/open_depth_color.dir/rule
+
+# Convenience name for target.
+open_depth_color: CMakeFiles/open_depth_color.dir/rule
+
+.PHONY : open_depth_color
+
+# clean rule for target.
+CMakeFiles/open_depth_color.dir/clean:
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/clean
+.PHONY : CMakeFiles/open_depth_color.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/open_depth_color.dir/clean
 
 .PHONY : clean
 

@@ -48,6 +48,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/openni_cv_test.dir/DependInfo.cmake"
+  "CMakeFiles/simple_demo.dir/DependInfo.cmake"
+  "CMakeFiles/open_depth.dir/DependInfo.cmake"
   "CMakeFiles/open_color.dir/DependInfo.cmake"
+  "CMakeFiles/open_depth_color.dir/DependInfo.cmake"
   )

@@ -61,7 +61,7 @@ int main( int argc, char** argv )
 
     // 创建OpenCV图像窗口
     namedWindow( "Depth Image",  0);
-    //namedWindow( "Color Image",  0);
+    namedWindow( "Color Image",  0);
 
     // 获得最大深度值
     int iMaxDepth = streamDepth.getMaxPixelValue();
@@ -70,7 +70,6 @@ int main( int argc, char** argv )
     VideoFrameRef  frameDepth;
     VideoFrameRef  frameColor;
 
-    int i=0;
     while( true )
     {
         // 读取数据流
@@ -92,13 +91,13 @@ int main( int argc, char** argv )
         cv::imshow( "Depth Image", mScaledDepth );
 
         // 同样的将彩色图像数据转化成OpenCV格式
-        //const cv::Mat mImageRGB(frameColor.getHeight(), frameColor.getWidth(), CV_8UC3, (void*)frameColor.getData());
+        const cv::Mat mImageRGB(frameColor.getHeight(), frameColor.getWidth(), CV_8UC3, (void*)frameColor.getData());
         // 首先将RGB格式转换为BGR格式
-        //cv::Mat cImageBGR;
-        //cv::cvtColor( mImageRGB, cImageBGR, CV_RGB2BGR );
+        cv::Mat cImageBGR;
+        cv::cvtColor( mImageRGB, cImageBGR, CV_RGB2BGR );
         // 然后显示彩色图像
 
-        //cv::imshow( "Color Image", cImageBGR );
+        cv::imshow( "Color Image", cImageBGR );
 
         // 终止快捷键
         if( cv::waitKey(1) == 'q')

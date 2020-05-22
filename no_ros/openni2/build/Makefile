@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/yiluzhang/code/loui_robot_laptop_test/no_ros/openni2/bu
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named openni_cv_test
+# Target rules for targets named simple_demo
 
 # Build rule for target.
-openni_cv_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 openni_cv_test
-.PHONY : openni_cv_test
+simple_demo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_demo
+.PHONY : simple_demo
 
 # fast build rule for target.
-openni_cv_test/fast:
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/build
-.PHONY : openni_cv_test/fast
+simple_demo/fast:
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/build
+.PHONY : simple_demo/fast
+
+#=============================================================================
+# Target rules for targets named open_depth
+
+# Build rule for target.
+open_depth: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 open_depth
+.PHONY : open_depth
+
+# fast build rule for target.
+open_depth/fast:
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/build
+.PHONY : open_depth/fast
 
 #=============================================================================
 # Target rules for targets named open_color
@@ -135,6 +148,19 @@ open_color: cmake_check_build_system
 open_color/fast:
 	$(MAKE) -f CMakeFiles/open_color.dir/build.make CMakeFiles/open_color.dir/build
 .PHONY : open_color/fast
+
+#=============================================================================
+# Target rules for targets named open_depth_color
+
+# Build rule for target.
+open_depth_color: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 open_depth_color
+.PHONY : open_depth_color
+
+# fast build rule for target.
+open_depth_color/fast:
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/build
+.PHONY : open_depth_color/fast
 
 open_color.o: open_color.cpp.o
 
@@ -163,32 +189,86 @@ open_color.cpp.s:
 	$(MAKE) -f CMakeFiles/open_color.dir/build.make CMakeFiles/open_color.dir/open_color.cpp.s
 .PHONY : open_color.cpp.s
 
-openni_cv_test.o: openni_cv_test.cpp.o
+open_depth.o: open_depth.cpp.o
 
-.PHONY : openni_cv_test.o
+.PHONY : open_depth.o
 
 # target to build an object file
-openni_cv_test.cpp.o:
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/openni_cv_test.cpp.o
-.PHONY : openni_cv_test.cpp.o
+open_depth.cpp.o:
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/open_depth.cpp.o
+.PHONY : open_depth.cpp.o
 
-openni_cv_test.i: openni_cv_test.cpp.i
+open_depth.i: open_depth.cpp.i
 
-.PHONY : openni_cv_test.i
+.PHONY : open_depth.i
 
 # target to preprocess a source file
-openni_cv_test.cpp.i:
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/openni_cv_test.cpp.i
-.PHONY : openni_cv_test.cpp.i
+open_depth.cpp.i:
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/open_depth.cpp.i
+.PHONY : open_depth.cpp.i
 
-openni_cv_test.s: openni_cv_test.cpp.s
+open_depth.s: open_depth.cpp.s
 
-.PHONY : openni_cv_test.s
+.PHONY : open_depth.s
 
 # target to generate assembly for a file
-openni_cv_test.cpp.s:
-	$(MAKE) -f CMakeFiles/openni_cv_test.dir/build.make CMakeFiles/openni_cv_test.dir/openni_cv_test.cpp.s
-.PHONY : openni_cv_test.cpp.s
+open_depth.cpp.s:
+	$(MAKE) -f CMakeFiles/open_depth.dir/build.make CMakeFiles/open_depth.dir/open_depth.cpp.s
+.PHONY : open_depth.cpp.s
+
+open_depth_color.o: open_depth_color.cpp.o
+
+.PHONY : open_depth_color.o
+
+# target to build an object file
+open_depth_color.cpp.o:
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/open_depth_color.cpp.o
+.PHONY : open_depth_color.cpp.o
+
+open_depth_color.i: open_depth_color.cpp.i
+
+.PHONY : open_depth_color.i
+
+# target to preprocess a source file
+open_depth_color.cpp.i:
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/open_depth_color.cpp.i
+.PHONY : open_depth_color.cpp.i
+
+open_depth_color.s: open_depth_color.cpp.s
+
+.PHONY : open_depth_color.s
+
+# target to generate assembly for a file
+open_depth_color.cpp.s:
+	$(MAKE) -f CMakeFiles/open_depth_color.dir/build.make CMakeFiles/open_depth_color.dir/open_depth_color.cpp.s
+.PHONY : open_depth_color.cpp.s
+
+simple_demo.o: simple_demo.cpp.o
+
+.PHONY : simple_demo.o
+
+# target to build an object file
+simple_demo.cpp.o:
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/simple_demo.cpp.o
+.PHONY : simple_demo.cpp.o
+
+simple_demo.i: simple_demo.cpp.i
+
+.PHONY : simple_demo.i
+
+# target to preprocess a source file
+simple_demo.cpp.i:
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/simple_demo.cpp.i
+.PHONY : simple_demo.cpp.i
+
+simple_demo.s: simple_demo.cpp.s
+
+.PHONY : simple_demo.s
+
+# target to generate assembly for a file
+simple_demo.cpp.s:
+	$(MAKE) -f CMakeFiles/simple_demo.dir/build.make CMakeFiles/simple_demo.dir/simple_demo.cpp.s
+.PHONY : simple_demo.cpp.s
 
 # Help Target
 help:
@@ -196,16 +276,24 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... openni_cv_test"
+	@echo "... simple_demo"
+	@echo "... open_depth"
+	@echo "... edit_cache"
 	@echo "... open_color"
+	@echo "... open_depth_color"
 	@echo "... open_color.o"
 	@echo "... open_color.i"
 	@echo "... open_color.s"
-	@echo "... openni_cv_test.o"
-	@echo "... openni_cv_test.i"
-	@echo "... openni_cv_test.s"
+	@echo "... open_depth.o"
+	@echo "... open_depth.i"
+	@echo "... open_depth.s"
+	@echo "... open_depth_color.o"
+	@echo "... open_depth_color.i"
+	@echo "... open_depth_color.s"
+	@echo "... simple_demo.o"
+	@echo "... simple_demo.i"
+	@echo "... simple_demo.s"
 .PHONY : help
 
 
