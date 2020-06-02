@@ -66,6 +66,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -88,17 +99,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -179,6 +179,21 @@ actionlib_generate_messages_py: show_image_raw/CMakeFiles/actionlib_generate_mes
 actionlib_generate_messages_py/fast:
 	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/actionlib_generate_messages_py.dir/build.make show_image_raw/CMakeFiles/actionlib_generate_messages_py.dir/build
 .PHONY : actionlib_generate_messages_py/fast
+
+# Convenience name for target.
+show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+.PHONY : show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_nodejs: show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+
+.PHONY : actionlib_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_generate_messages_nodejs/fast:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+.PHONY : actionlib_generate_messages_nodejs/fast
 
 # Convenience name for target.
 show_image_raw/CMakeFiles/tf_generate_messages_py.dir/rule:
@@ -391,21 +406,6 @@ tf2_msgs_generate_messages_py/fast:
 .PHONY : tf2_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
-	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-.PHONY : show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_nodejs: show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-.PHONY : actionlib_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_generate_messages_nodejs/fast:
-	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
-.PHONY : actionlib_generate_messages_nodejs/fast
-
-# Convenience name for target.
 show_image_raw/CMakeFiles/show_image_raw.dir/rule:
 	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/show_image_raw.dir/rule
 .PHONY : show_image_raw/CMakeFiles/show_image_raw.dir/rule
@@ -419,6 +419,21 @@ show_image_raw: show_image_raw/CMakeFiles/show_image_raw.dir/rule
 show_image_raw/fast:
 	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/show_image_raw.dir/build.make show_image_raw/CMakeFiles/show_image_raw.dir/build
 .PHONY : show_image_raw/fast
+
+# Convenience name for target.
+show_image_raw/CMakeFiles/show_imu.dir/rule:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 show_image_raw/CMakeFiles/show_imu.dir/rule
+.PHONY : show_image_raw/CMakeFiles/show_imu.dir/rule
+
+# Convenience name for target.
+show_imu: show_image_raw/CMakeFiles/show_imu.dir/rule
+
+.PHONY : show_imu
+
+# fast build rule for target.
+show_imu/fast:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/show_imu.dir/build.make show_image_raw/CMakeFiles/show_imu.dir/build
+.PHONY : show_imu/fast
 
 src/save_image.o: src/save_image.cpp.o
 
@@ -474,6 +489,33 @@ src/show_image_raw.cpp.s:
 	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/show_image_raw.dir/build.make show_image_raw/CMakeFiles/show_image_raw.dir/src/show_image_raw.cpp.s
 .PHONY : src/show_image_raw.cpp.s
 
+src/show_imu.o: src/show_imu.cpp.o
+
+.PHONY : src/show_imu.o
+
+# target to build an object file
+src/show_imu.cpp.o:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/show_imu.dir/build.make show_image_raw/CMakeFiles/show_imu.dir/src/show_imu.cpp.o
+.PHONY : src/show_imu.cpp.o
+
+src/show_imu.i: src/show_imu.cpp.i
+
+.PHONY : src/show_imu.i
+
+# target to preprocess a source file
+src/show_imu.cpp.i:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/show_imu.dir/build.make show_image_raw/CMakeFiles/show_imu.dir/src/show_imu.cpp.i
+.PHONY : src/show_imu.cpp.i
+
+src/show_imu.s: src/show_imu.cpp.s
+
+.PHONY : src/show_imu.s
+
+# target to generate assembly for a file
+src/show_imu.cpp.s:
+	cd /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/build && $(MAKE) -f show_image_raw/CMakeFiles/show_imu.dir/build.make show_image_raw/CMakeFiles/show_imu.dir/src/show_imu.cpp.s
+.PHONY : src/show_imu.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -482,6 +524,8 @@ help:
 	@echo "... depend"
 	@echo "... list_install_components"
 	@echo "... actionlib_generate_messages_py"
+	@echo "... rebuild_cache"
+	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... tf_generate_messages_py"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_cpp"
@@ -498,9 +542,8 @@ help:
 	@echo "... install"
 	@echo "... tf2_msgs_generate_messages_eus"
 	@echo "... tf2_msgs_generate_messages_py"
-	@echo "... actionlib_generate_messages_nodejs"
-	@echo "... rebuild_cache"
 	@echo "... show_image_raw"
+	@echo "... show_imu"
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... test"
@@ -510,6 +553,9 @@ help:
 	@echo "... src/show_image_raw.o"
 	@echo "... src/show_image_raw.i"
 	@echo "... src/show_image_raw.s"
+	@echo "... src/show_imu.o"
+	@echo "... src/show_imu.i"
+	@echo "... src/show_imu.s"
 .PHONY : help
 
 

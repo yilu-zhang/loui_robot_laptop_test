@@ -946,6 +946,19 @@ actionlib_generate_messages_py/fast:
 .PHONY : actionlib_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named actionlib_generate_messages_nodejs
+
+# Build rule for target.
+actionlib_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_nodejs
+.PHONY : actionlib_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_generate_messages_nodejs/fast:
+	$(MAKE) -f show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+.PHONY : actionlib_generate_messages_nodejs/fast
+
+#=============================================================================
 # Target rules for targets named tf_generate_messages_py
 
 # Build rule for target.
@@ -1128,19 +1141,6 @@ tf2_msgs_generate_messages_py/fast:
 .PHONY : tf2_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named actionlib_generate_messages_nodejs
-
-# Build rule for target.
-actionlib_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_nodejs
-.PHONY : actionlib_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_generate_messages_nodejs/fast:
-	$(MAKE) -f show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make show_image_raw/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
-.PHONY : actionlib_generate_messages_nodejs/fast
-
-#=============================================================================
 # Target rules for targets named show_image_raw
 
 # Build rule for target.
@@ -1152,6 +1152,19 @@ show_image_raw: cmake_check_build_system
 show_image_raw/fast:
 	$(MAKE) -f show_image_raw/CMakeFiles/show_image_raw.dir/build.make show_image_raw/CMakeFiles/show_image_raw.dir/build
 .PHONY : show_image_raw/fast
+
+#=============================================================================
+# Target rules for targets named show_imu
+
+# Build rule for target.
+show_imu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 show_imu
+.PHONY : show_imu
+
+# fast build rule for target.
+show_imu/fast:
+	$(MAKE) -f show_image_raw/CMakeFiles/show_imu.dir/build.make show_image_raw/CMakeFiles/show_imu.dir/build
+.PHONY : show_imu/fast
 
 # Help Target
 help:
@@ -1226,6 +1239,7 @@ help:
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_py"
 	@echo "... actionlib_generate_messages_py"
+	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... tf_generate_messages_py"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_cpp"
@@ -1240,8 +1254,8 @@ help:
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... tf2_msgs_generate_messages_eus"
 	@echo "... tf2_msgs_generate_messages_py"
-	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... show_image_raw"
+	@echo "... show_imu"
 .PHONY : help
 
 
