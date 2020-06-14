@@ -15,6 +15,10 @@ std_msgs/Header.h
 /home/yiluzhang/code/loui_robot_laptop_test/ros_ws/src/show_image_raw/src/std_msgs/Header.h
 math.h
 -
+iostream
+-
+fstream
+-
 
 /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
 string

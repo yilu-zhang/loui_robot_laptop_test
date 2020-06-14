@@ -2,6 +2,10 @@
 #include "sensor_msgs/Imu.h"
 #include "std_msgs/Header.h"
 #include <math.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 double last_t=0;
 int wrong_cnt=0;
@@ -30,7 +34,13 @@ void info0_show(const sensor_msgs::Imu::ConstPtr &msg)
         	ROS_INFO("imu_seconds:%f",head.stamp.toSec());
 		ROS_INFO("imu_ang_vel:%f %f %f",msg->angular_velocity.x,msg->angular_velocity.y,msg->angular_velocity.z);
 		ROS_INFO("imu_linear_acc:%f %f %f",msg->linear_acceleration.x,msg->linear_acceleration.y,msg->linear_acceleration.z); 
-	}        
+	}
+	ofstream imu_file;
+	//imu_file.open("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_rectangle/imu_data.txt", ios::app);
+	imu_file.open("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_rectangle/vins_imu_data_40_140.txt", ios::app);
+	imu_file<<fixed<<setprecision(6)<<head.stamp.toSec()<<" "<<msg->angular_velocity.x<<" "<<msg->angular_velocity.y<<" "<<msg->angular_velocity.z<<" "
+				    <<msg->linear_acceleration.x<<" "<<msg->linear_acceleration.y<<" "<<msg->linear_acceleration.z<<endl;
+	imu_file.close();       
 }
 
 
@@ -38,7 +48,8 @@ int main(int argc, char **argv)
 {
         ros::init(argc,argv,"show_imu");
         ros::NodeHandle n;
-        ros::Subscriber sub0=n.subscribe("/loui_robot1/imu",1000,info0_show);
+        //ros::Subscriber sub0=n.subscribe("/loui_robot1/imu",1000,info0_show);
+	ros::Subscriber sub0=n.subscribe("/imu0",1000,info0_show);
         ros::spin();
         return 0;
 }
