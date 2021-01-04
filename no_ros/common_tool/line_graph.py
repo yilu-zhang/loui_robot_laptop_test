@@ -39,8 +39,23 @@ def open_v_file(path):
         
 
 if __name__=='__main__':
+  # lab_circle1/static_start
+  #t_e,e_vel_x,e_vel_y,e_vel_z,vel_x,vel_y,vel_z =  open_e_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_circle1/static_start/vies_vel.txt")
+  #t_v,v_vel_x,v_vel_y,v_vel_z =  open_v_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_circle1/static_start/vins_vel.txt")
+
+  # lab_circle1/circle_start
+  #t_e,e_vel_x,e_vel_y,e_vel_z,vel_x,vel_y,vel_z =  open_e_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_circle1/circle_start/vies_vel.txt")
+  #t_v,v_vel_x,v_vel_y,v_vel_z =  open_v_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_circle1/circle_start/vins_vel.txt")
+
+  # lab_circle2
+  #t_e,e_vel_x,e_vel_y,e_vel_z,vel_x,vel_y,vel_z =  open_e_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_circle2/vies_vel.txt")
+  #t_v,v_vel_x,v_vel_y,v_vel_z =  open_v_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_circle2/vins_vel.txt")
+
+  # lab_rectangle
   t_e,e_vel_x,e_vel_y,e_vel_z,vel_x,vel_y,vel_z =  open_e_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_rectangle/vies_vel.txt")
   t_v,v_vel_x,v_vel_y,v_vel_z =  open_v_file("/home/yiluzhang/experiment/vins/camera/kinect2/paper/lab_rectangle/vins_vel.txt")
+
+  
 
   t0=t_e[0]
   correct_t_e = [x-t0 for x in t_e]
@@ -52,13 +67,18 @@ if __name__=='__main__':
   y2 =  np.array(vel_x)
   y3 =  np.array(v_vel_x)
 
-  '''plt.title("velocity") 
+  '''#plt.title("velocity") 
   #plt.xlabel("t [s]") 
-  plt.ylabel("x [m/s]") 
-  plt.plot(x1,y1,color='r',linewidth=1.0,linestyle="-",label="Our method+Loop",alpha = 1)
-  plt.plot(x1,y2,color='b',linewidth=1.0,linestyle="-",label="Our method",alpha = 1)
-  plt.plot(x2,y3,color='k',linewidth=1.0,linestyle="-",label="VINS-mono",alpha = 1)
-  plt.legend(loc="lower center")
+  #plt.ylabel("x [m/s]") 
+  x1 = []
+  x2 = []
+  y1 = []
+  y2 = []
+  y3 = []
+  plt.plot(x1,y1,color='r',linewidth=1.0,linestyle="-",label="Ground Truth",alpha = 1)
+  plt.plot(x1,y2,color='b',linewidth=1.0,linestyle="-",label="Proposed",alpha = 1)
+  plt.plot(x2,y3,color='k',linewidth=1.0,linestyle="-",label="VINS-Mono",alpha = 1)
+  plt.legend(loc="center")
   plt.show()'''
 
 
@@ -66,10 +86,12 @@ if __name__=='__main__':
   plt.title("velocity") 
   #plt.xlabel("t [s]") 
   plt.ylabel("x [m/s]") 
-  plt.plot(x1,y1,color='r',linewidth=1.0,linestyle="-",label="Encoder",alpha = 1)
-  plt.plot(x1,y2,color='b',linewidth=0.5,linestyle="--",label="Our method",alpha = 1)
-  plt.plot(x2,y3,color='k',linewidth=0.5,linestyle="-.",label="VINS-mono",alpha = 1)
+  plt.plot(x1,y1,color='r',linewidth=1.0,linestyle="-",label="Ground Truth",alpha = 1)
+  plt.plot(x1,y2,color='b',linewidth=0.5,linestyle="--",label="Proposed",alpha = 1)
+  plt.plot(x2,y3,color='k',linewidth=0.5,linestyle="-.",label="VINS-Mono",alpha = 1)
   #plt.legend(loc="lower center")
+  #plt.legend(loc="lower right")
+  #plt.legend(loc="upper center")
   #plt.show()
 
   plt.subplot(3,1,2)
@@ -79,9 +101,9 @@ if __name__=='__main__':
   #plt.title("velocity") 
   #plt.xlabel("t [s]") 
   plt.ylabel("y [m/s]") 
-  plt.plot(x1,y4,color='r',linewidth=1.0,linestyle="-",label="Encoder",alpha = 1)
-  plt.plot(x1,y5,color='b',linewidth=0.5,linestyle="--",label="Our method",alpha = 1)
-  plt.plot(x2,y6,color='k',linewidth=0.5,linestyle="-.",label="VINS-mono",alpha = 1)
+  plt.plot(x1,y4,color='r',linewidth=1.0,linestyle="-",label="Ground Truth",alpha = 1)
+  plt.plot(x1,y5,color='b',linewidth=0.5,linestyle="--",label="Proposed",alpha = 1)
+  plt.plot(x2,y6,color='k',linewidth=0.5,linestyle="-.",label="VINS-Mono",alpha = 1)
   #plt.legend(loc="lower center")
   #plt.show()
 
@@ -92,9 +114,9 @@ if __name__=='__main__':
   #plt.title("velocity") 
   plt.xlabel("t [s]") 
   plt.ylabel("z [m/s]") 
-  plt.plot(x1,y7,color='r',linewidth=1.0,linestyle="-",label="Encoder",alpha = 1)
-  plt.plot(x1,y8,color='b',linewidth=0.5,linestyle="--",label="Our method",alpha = 1)
-  plt.plot(x2,y9,color='k',linewidth=0.5,linestyle="-.",label="VINS-mono",alpha = 1)
+  plt.plot(x1,y7,color='r',linewidth=1.0,linestyle="-",label="Ground Truth",alpha = 1)
+  plt.plot(x1,y8,color='b',linewidth=0.5,linestyle="--",label="Proposed",alpha = 1)
+  plt.plot(x2,y9,color='k',linewidth=0.5,linestyle="-.",label="VINS-Mono",alpha = 1)
   plt.legend(loc="upper right")
   plt.show()
 
